@@ -1,24 +1,71 @@
-# Job_Matching
-This project is build on Machine Learning to Match profiles.
-2 Jeu de Donn ́ees
-Pour ce projet, nous avons utilis ́e deux fichiers CSV extraits de la collec- tion de Firebase jobs :
-— companies job.csv : Contient les informations sur les offres d’emploi des entreprises.
-— candidates job.csv : Contient les informations sur les candidats `a la recherche d’emploi.
-Ces jeux de donn ́ees incluent des champs tels que les comp ́etences tech- niques et non techniques, les valeurs, le type de contrat, l’exp ́erience, le niveau d’ ́etudes, et bien d’autres.
-3 M ́ethodologie
-4
-La m ́ethodologie suivie dans ce projet comprend plusieurs  ́etapes cl ́es :
-1. Encodage des attributs : Les caract ́eristiques des candidats et des offres sont encod ́ees en utilisant des mappings pr ́ed ́efinis pour les va- riables cat ́egorielles telles que le type de contrat, l’exp ́erience, le niveau d’ ́etudes, etc.
-2. Remplissage des valeurs manquantes : Pour les entr ́ees man- quantes, nous avons attribu ́e des valeurs par d ́efaut afin de garantir l’int ́egrit ́e des donn ́ees.
-3. Encodage des comp ́etences et des valeurs : Les comp ́etences non techniques et les valeurs sont encod ́ees sous forme de matrices binaires.
-4. Vectorisation TF-IDF : Les comp ́etences techniques sont vecto- ris ́ees en utilisant la m ́ethode TF-IDF (Term Frequency-Inverse Do- cument Frequency).
-5. Combinaison des caract ́eristiques : Toutes les caract ́eristiques en- cod ́ees sont combin ́ees en un seul DataFrame pour les candidats et les offres.
-6. Calcul de la similarit ́e cosinus : La similarit ́e cosinus entre les ca- ract ́eristiques des candidats et des offres est calcul ́ee pour d ́eterminer les meilleures correspondances.
+# Job Matching
 
-Vectorisation des Comp ́etences Techniques
-Les comp ́etences techniques sont vectoris ́ees en utilisant la m ́ethode TF- IDF, qui permet de convertir des textes en vecteurs de caract ́eristiques num ́eriques
-3
-en tenant compte de l’importance relative des termes.
-7 Calcul de la Similarit ́e Cosinus
-Le calcul de la similarit ́e cosinus entre les vecteurs de caract ́eristiques des candidats et des offres permet d’ ́evaluer la pertinence des correspondances. La similarit ́e cosinus est d ́efinie comme le produit scalaire des vecteurs, normalis ́e par les normes des vecteurs.
-Similarite Cosinus = A · B ∥A∥∥B∥
+This project leverages **Machine Learning** techniques to efficiently match candidate profiles with job opportunities.
+
+---
+
+## Dataset Description
+
+This project utilizes two CSV files extracted from a Firebase jobs collection:
+
+- **`companies_job.csv`**: Contains information about job postings from various companies.  
+- **`candidates_job.csv`**: Contains information about job-seeking candidates.
+
+These datasets include fields such as:
+- **Technical and non-technical skills**
+- **Values**
+- **Contract type**
+- **Experience**
+- **Education level**, and more.
+
+---
+
+## Methodology
+
+The project follows a structured approach with the following key steps:
+
+### 1. Attribute Encoding
+Attributes of candidates and job postings (e.g., contract type, experience level, education level) are encoded using predefined mappings for categorical variables.
+
+### 2. Handling Missing Values
+Missing data is filled with default values to maintain the dataset's integrity.
+
+### 3. Skill and Value Encoding
+Non-technical skills and values are encoded as binary matrices to capture their presence or absence in a structured format.
+
+### 4. Technical Skills Vectorization
+Technical skills are vectorized using **TF-IDF (Term Frequency-Inverse Document Frequency)**. This technique converts textual data into numerical feature vectors, emphasizing the relative importance of terms.
+
+### 5. Feature Combination
+All encoded features are combined into a single **DataFrame** for candidates and job postings, ensuring a unified representation of all attributes.
+
+### 6. Cosine Similarity Calculation
+The similarity between candidates and job postings is computed using **cosine similarity**. This measure evaluates the relevance of matches based on the similarity of their feature vectors.
+
+---
+
+## Technical Skill Vectorization with TF-IDF
+
+The **TF-IDF** technique is used to vectorize technical skills. It transforms textual descriptions into numerical feature vectors while accounting for the importance of each term relative to the dataset. This ensures that rare but significant skills are appropriately weighted.
+
+---
+
+## Cosine Similarity Calculation
+
+**Cosine similarity** is employed to determine the degree of match between candidates and job postings. It measures the cosine of the angle between two vectors (candidate features and job features) and is defined as:
+
+\[
+\text{Cosine Similarity} = \frac{A \cdot B}{\|A\| \|B\|}
+\]
+
+Where:
+- \( A \) and \( B \) are the feature vectors for a candidate and a job posting.
+- \( \|A\| \) and \( \|B\| \) are the magnitudes (norms) of these vectors.
+
+A higher cosine similarity score indicates a better match.
+
+---
+
+## Conclusion
+
+This system provides an automated and scalable solution for matching candidates with job postings by analyzing and comparing their respective features. The combination of data encoding, TF-IDF vectorization, and cosine similarity ensures precise and meaningful matches.
